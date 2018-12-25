@@ -1,0 +1,299 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (Simplified, PRC) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\MEXSample.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""     // Standard components\r\n"
+    "#endif\r\n"
+    "1 TYPELIB ""MEXSample.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\MEXSample.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP_OPEN_FOLDER  BITMAP                  "res\\open_folder.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MESSAGE_DIALOG DIALOGEX 0, 0, 378, 147
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Message"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "<a>SysLink1</a>",IDC_SYSLINK1,"SysLink",WS_TABSTOP,7,14,364,52
+    CONTROL         "<a>SysLink2</a>",IDC_SYSLINK2,"SysLink",WS_TABSTOP,7,80,364,56
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_MESSAGE_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 371
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 136
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Chinese (Simplified, PRC) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About MEXSample"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,20,20
+    LTEXT           "MEXSample, Version 1.0",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2015",IDC_STATIC,41,25,114,8
+    DEFPUSHBUTTON   "OK",IDOK,113,41,50,14,WS_GROUP
+END
+
+IDD_MEXSAMPLE_DIALOG DIALOGEX 0, 0, 495, 280
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Sample for Mold 4.0(3.7)"
+FONT 10, "Microsoft Sans Serif", 400, 0, 0x0
+BEGIN
+    COMBOBOX        IDC_COMBO_MODULE_INIT,29,21,79,30,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Init",IDC_BUTTON_MODULE_INIT,117,20,27,13
+    GROUPBOX        "Import && Setting",IDC_STATIC_IMPORT_SETTING,20,50,475,35
+    COMBOBOX        IDC_COMBO_MAIN,29,66,152,30,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_SUB,187,66,247,30,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Start",IDC_BUTTON_RUN,445,65,30,14
+    GROUPBOX        "Modify",IDC_STATIC_MODIFY,21,94,474,50
+    LTEXT           "Modify String",IDC_STATIC_MODIFY_STRING,27,119,55,18
+    EDITTEXT        IDC_EDIT_MODIFY_STRING,80,107,357,32,ES_MULTILINE | ES_AUTOVSCROLL | WS_VSCROLL
+    PUSHBUTTON      "Modify",IDC_BUTTON_MODIFY,445,115,31,14
+    GROUPBOX        "BOM",IDC_STATIC_BOM,20,155,475,119
+    LTEXT           "PCS'",IDC_STATIC_BOM_NUMBER,455,166,18,8
+    EDITTEXT        IDC_EDIT_BOM_NUMBER,451,178,24,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "BOM String",IDC_STATIC_BOM_STRING,27,234,46,8
+    EDITTEXT        IDC_EDIT_BOM_STRING,81,212,338,55,ES_MULTILINE | ES_AUTOVSCROLL | WS_VSCROLL
+    PUSHBUTTON      "Show BOM",IDC_BUTTON_BOM,426,227,48,14
+    GROUPBOX        "SDK Lauguage Setting",IDC_STATIC_LANG_SETTING,379,7,81,34
+    COMBOBOX        IDC_COMBO_LANG_SETTING,386,22,63,30,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Interfaces Initialize",IDC_STATIC_MODULE_INIT,20,5,140,37
+    CONTROL         "",IDC_LIST_BOM,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,27,167,343,33
+    CONTROL         "<A>HELP</A>",IDC_SYSLINK_HELP,"SysLink",LWS_RIGHT | WS_TABSTOP,459,13,29,23
+    CONTROL         "<a>?</a>",IDC_SYSLINK_1,"SysLink",WS_TABSTOP,148,21,12,16
+    CONTROL         "<a>?</a>",IDC_SYSLINK_4,"SysLink",WS_TABSTOP,479,228,11,16
+    CONTROL         "<a>?</a>",IDC_SYSLINK_3,"SysLink",WS_TABSTOP,480,117,12,16
+    CONTROL         "<a>?</a>",IDC_SYSLINK_2,"SysLink",WS_TABSTOP,481,67,11,16
+    CTEXT           "1",IDC_STATIC_TAG_1,2,19,17,16
+    CTEXT           "2",IDC_STATIC_TAG_2,3,64,17,16
+    CTEXT           "3",IDC_STATIC_TAG_3,3,116,16,18
+    CTEXT           "4",IDC_STATIC_TAG_4,4,188,15,17
+    CONTROL         "Clear Existing BOM",IDC_CHECK_CLEAR_EXISTING_BOM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,377,180,73,10
+    GROUPBOX        "File Path",IDC_STATIC_FILE_PATH,165,6,201,37
+    PUSHBUTTON      "",IDC_BUTTON_MODEL_FILE,318,13,11,11,BS_BITMAP
+    PUSHBUTTON      "",IDC_BUTTON_PROPERTY_FILE,318,28,11,11,BS_BITMAP
+    EDITTEXT        IDC_EDIT_MODEL_FILE,217,13,95,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PROPERTY_FILE,217,28,95,12,ES_AUTOHSCROLL
+    LTEXT           "Model File",IDC_STATIC_MODEL_FILE,173,16,34,11
+    LTEXT           "Property File",IDC_STATIC_PROPERTY_FILE,173,29,39,8
+    CONTROL         "",IDC_CHECK_PROP_FILE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,341,29,16,10
+    CONTROL         "",IDC_CHECK_MODEL_FILE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,341,15,16,10
+    LTEXT           "Auto Open",IDC_STATIC_AUTO_OPEN,332,6,33,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_MEXSAMPLE_DIALOG, DIALOG
+    BEGIN
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 3,0,0,0
+ PRODUCTVERSION 4,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "CompanyName", "MISUMI Corporation"
+            VALUE "FileDescription", "Sample for Mold"
+            VALUE "FileVersion", "3.0.0.0"
+            VALUE "LegalCopyright", "MISUMI Corporation Copyright (C)2018"
+            VALUE "ProductName", "Mold EX-Press (Global)"
+            VALUE "ProductVersion", "4.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_MEXSAMPLE_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDP_OLE_INIT_FAILED     "OLE initialization failed.  Make sure that the OLE libraries are the correct version."
+    IDS_ABOUTBOX            "&About MEXSample..."
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\MEXSample.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"     // Standard components
+#endif
+1 TYPELIB "MEXSample.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

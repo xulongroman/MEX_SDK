@@ -1,0 +1,29 @@
+// MEXSample.idl : type library source for MEXSample.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (MEXSample.tlb).
+
+[ uuid(3E6111D8-7CB6-4E7A-9FF6-156ECD61AC57), version(1.0) ]
+library MEXSample
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	//  Primary dispatch interface for CMEXSampleDoc
+	
+	[ uuid(D91792D8-9C66-4C63-9FBD-B888B8652F52) ]
+	dispinterface IMEXSample
+	{
+		properties:
+			
+		methods:
+	};
+
+	//  Class information for CMEXSampleDoc
+	
+	[ uuid(46A67CF8-8865-4DF4-9394-4CDC8BA24EF7) ]
+	coclass MEXSample
+	{
+		[default] dispinterface IMEXSample;
+	};
+};
