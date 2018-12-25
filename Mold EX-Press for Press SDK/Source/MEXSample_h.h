@@ -3,18 +3,18 @@
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 7.00.0500 */
-/* at Fri Oct 19 10:20:11 2018
+ /* File created by MIDL compiler version 8.00.0603 */
+/* at Tue Dec 25 23:37:22 2018
  */
-/* Compiler settings for .\MEXSample.idl:
-    Oicf, W1, Zp8, env=Win32 (32b run)
+/* Compiler settings for MEXSample.idl:
+    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0603 
     protocol : dce , ms_ext, c_ext, robust
-    error checks: stub_data 
+    error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
          __declspec(uuid()), __declspec(selectany), __declspec(novtable)
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
-//@@MIDL_FILE_HEADING(  )
+/* @@MIDL_FILE_HEADING(  ) */
 
 #pragma warning( disable: 4049 )  /* more than 64k source lines */
 
@@ -44,6 +44,7 @@
 #ifndef __IMEXSample_FWD_DEFINED__
 #define __IMEXSample_FWD_DEFINED__
 typedef interface IMEXSample IMEXSample;
+
 #endif 	/* __IMEXSample_FWD_DEFINED__ */
 
 
@@ -99,8 +100,8 @@ EXTERN_C const IID DIID_IMEXSample;
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
             IMEXSample * This,
             /* [in] */ REFIID riid,
-            /* [iid_is][out] */ 
-            __RPC__deref_out  void **ppvObject);
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
         
         ULONG ( STDMETHODCALLTYPE *AddRef )( 
             IMEXSample * This);
@@ -128,14 +129,22 @@ EXTERN_C const IID DIID_IMEXSample;
         
         /* [local] */ HRESULT ( STDMETHODCALLTYPE *Invoke )( 
             IMEXSample * This,
-            /* [in] */ DISPID dispIdMember,
-            /* [in] */ REFIID riid,
-            /* [in] */ LCID lcid,
-            /* [in] */ WORD wFlags,
-            /* [out][in] */ DISPPARAMS *pDispParams,
-            /* [out] */ VARIANT *pVarResult,
-            /* [out] */ EXCEPINFO *pExcepInfo,
-            /* [out] */ UINT *puArgErr);
+            /* [annotation][in] */ 
+            _In_  DISPID dispIdMember,
+            /* [annotation][in] */ 
+            _In_  REFIID riid,
+            /* [annotation][in] */ 
+            _In_  LCID lcid,
+            /* [annotation][in] */ 
+            _In_  WORD wFlags,
+            /* [annotation][out][in] */ 
+            _In_  DISPPARAMS *pDispParams,
+            /* [annotation][out] */ 
+            _Out_opt_  VARIANT *pVarResult,
+            /* [annotation][out] */ 
+            _Out_opt_  EXCEPINFO *pExcepInfo,
+            /* [annotation][out] */ 
+            _Out_opt_  UINT *puArgErr);
         
         END_INTERFACE
     } IMEXSampleVtbl;
