@@ -177,6 +177,131 @@ BEGIN_MESSAGE_MAP(CMEXSampleDlg, CDialog)
 END_MESSAGE_MAP()
 
 
+CString GetInstallPath(CString strQueryName)
+{
+	CString strPath;
+
+	bool bWow64 = false;
+	SYSTEM_INFO si;
+	GetNativeSystemInfo(&si);
+
+	if (si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64 ||
+		si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_IA64)
+	{
+		//64 位操作系统
+		bWow64 = true;
+	}
+
+	strQueryName += _T(".Out\\CLSID");
+
+	HKEY hKey = NULL;
+	long lRet = RegOpenKeyEx(HKEY_CLASSES_ROOT, strQueryName, 0, KEY_READ, &hKey);
+
+	CString strGuid;
+	if (hKey != NULL)
+	{
+		DWORD dwSize = 0;
+		DWORD dwDataType = 0;
+		LPBYTE lpValue = NULL;
+		lRet = RegQueryValueEx(hKey,
+			L"",
+			0,
+			&dwDataType,
+			lpValue,  // NULL
+			&dwSize); // will contain the data size
+
+					  // Alloc the buffer
+		lpValue = (LPBYTE)malloc(dwSize);
+
+		// Call twice RegQueryValueEx to get the value
+		lRet = RegQueryValueEx(hKey,
+			L"",
+			0,
+			&dwDataType,
+			lpValue,
+			&dwSize);
+
+		char* chkGuid = new char[dwSize];
+		int j = 0;
+		for (int i = 0; i < dwSize; i++)
+		{
+			if (lpValue[i] != '\0')
+			{
+				chkGuid[j] = lpValue[i];
+				j++;
+			}
+		}
+		chkGuid[j] = '\0';
+		strGuid = CString(chkGuid);
+		free(lpValue);
+		delete[] chkGuid;
+
+		RegCloseKey(hKey);
+	}
+
+	if (bWow64)
+	{
+		strGuid = _T("Wow6432Node\\CLSID\\") + strGuid + _T("\\LocalServer32");
+		//		AfxMessageBox(L"OS is 64bit");
+	}
+	else
+	{
+		strGuid = _T("CLSID\\") + strGuid + _T("\\LocalServer32");
+		//		AfxMessageBox(L"OS is 32bit");
+	}
+	//	AfxMessageBox(L"HKEY_CLASSES_ROOT\\"+strGuid);
+
+	lRet = RegOpenKeyEx(HKEY_CLASSES_ROOT, strGuid, 0, KEY_READ, &hKey);
+	if (hKey != NULL)
+	{
+		DWORD dwSize = 0;
+		DWORD dwDataType = 0;
+		LPBYTE lpValue = NULL;
+		lRet = RegQueryValueEx(hKey,
+			L"",
+			0,
+			&dwDataType,
+			lpValue,  // NULL
+			&dwSize); // will contain the data size
+
+					  // Alloc the buffer
+		lpValue = (LPBYTE)malloc(dwSize);
+
+		// Call twice RegQueryValueEx to get the value
+		lRet = RegQueryValueEx(hKey,
+			L"",
+			0,
+			&dwDataType,
+			lpValue,
+			&dwSize);
+
+		char* chkPath = new char[dwSize];
+		int j = 0;
+		for (int i = 0; i < dwSize; i++)
+		{
+			if (lpValue[i] != '\0')
+			{
+				chkPath[j] = lpValue[i];
+				j++;
+			}
+		}
+		chkPath[j] = '\0';
+		strPath = CString(chkPath);
+		RegCloseKey(hKey);
+		free(lpValue);
+		delete[] chkPath;
+	}
+
+
+	int pos = strPath.ReverseFind('\\');
+	strPath = strPath.Left(pos + 1);
+	if (strPath[0] == '"') {
+		strPath = strPath.Right(strPath.GetLength() - 1);
+	}
+
+	return strPath;
+}
+
 // CMEXSampleDlg message handlers
 BOOL CMEXSampleDlg::OnInitDialog()
 {
@@ -340,124 +465,7 @@ BOOL CMEXSampleDlg::OnInitDialog()
 
 //	m_szGMLPath = _wgetenv(_T("Misumi_Path_GML"));
 
-	bool bWow64 = false;
-	SYSTEM_INFO si; 
-	GetNativeSystemInfo(&si); 
-
-	if (si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64 ||    
-		si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_IA64 ) 
-	{ 
-		//64 位操作系统
-		bWow64 = true;
-	} 
-
-	HKEY hKey = NULL;
-	long lRet= RegOpenKeyEx(HKEY_CLASSES_ROOT, _T("Mold_EX_Press_Global_M.Out\\CLSID"), 0, KEY_READ, &hKey);
-
-	CString strGuid;
-	if (hKey != NULL)
-	{
-		DWORD dwSize     = 0;
-		DWORD dwDataType = 0;
-		LPBYTE lpValue   = NULL;
-		lRet = RegQueryValueEx(hKey, 
-			L"",
-			0,
-			&dwDataType,
-			lpValue,  // NULL
-			&dwSize); // will contain the data size
-
-		// Alloc the buffer
-		lpValue = (LPBYTE)malloc(dwSize);
-
-		// Call twice RegQueryValueEx to get the value
-		lRet = RegQueryValueEx(hKey, 
-			L"",
-			0,
-			&dwDataType,
-			lpValue,
-			&dwSize);
-
-		char* chkGuid = new char[dwSize];
-		int j = 0;
-		for (int i = 0; i<dwSize; i++)
-		{
-			if (lpValue[i] != '\0')
-			{
-				chkGuid[j] = lpValue[i];
-				j++;
-			}
-		}
-		chkGuid[j] = '\0';
-		strGuid = CString(chkGuid);
-		free(lpValue);
-		delete [] chkGuid;
-
-		RegCloseKey(hKey);
-	}
-
-	if (bWow64)
-	{
-		strGuid = _T("Wow6432Node\\CLSID\\") + strGuid + _T("\\LocalServer32");
-//		AfxMessageBox(L"OS is 64bit");
-	}
-	else
-	{
-		strGuid = _T("CLSID\\") + strGuid + _T("\\LocalServer32");
-//		AfxMessageBox(L"OS is 32bit");
-	}
-//	AfxMessageBox(L"HKEY_CLASSES_ROOT\\"+strGuid);
-
-	lRet= RegOpenKeyEx(HKEY_CLASSES_ROOT, strGuid, 0, KEY_READ, &hKey);
-	CString strPath;
-	if (hKey != NULL)
-	{
-		DWORD dwSize     = 0;
-		DWORD dwDataType = 0;
-		LPBYTE lpValue   = NULL;
-		lRet = RegQueryValueEx(hKey, 
-			L"",
-			0,
-			&dwDataType,
-			lpValue,  // NULL
-			&dwSize); // will contain the data size
-
-		// Alloc the buffer
-		lpValue = (LPBYTE)malloc(dwSize);
-
-		// Call twice RegQueryValueEx to get the value
-		lRet = RegQueryValueEx(hKey, 
-			L"",
-			0,
-			&dwDataType,
-			lpValue,
-			&dwSize);
-
-		char* chkPath = new char[dwSize];
-		int j = 0;
-		for (int i = 0; i<dwSize; i++)
-		{
-			if (lpValue[i] != '\0')
-			{
-				chkPath[j] = lpValue[i];
-				j++;
-			}
-		}
-		chkPath[j] = '\0';
-		strPath = CString(chkPath);
-		RegCloseKey(hKey);
-		free(lpValue);
-		delete [] chkPath;
-	}
-
-
-	int pos = strPath.ReverseFind('\\');
-	strPath = strPath.Left(pos+1);
-	if (strPath[0] == '"'){
-		strPath = strPath.Right(strPath.GetLength() - 1);
-	}
-
-	m_szGMLPath = strPath;
+	m_szGMLPath = GetInstallPath(_T("Mold_EX_Press_Global_M"));
 
 //	AfxMessageBox(m_szGMLPath);
 
