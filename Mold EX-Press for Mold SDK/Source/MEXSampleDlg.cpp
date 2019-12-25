@@ -1650,6 +1650,14 @@ void CMEXSampleDlg::OnBnClickedButtonModify()
 	modify_edit->GetWindowText(strFX);
 	if (strFX==_T(""))
 		return;
+
+	int length = strFX.GetLength();
+	while (strFX.GetAt(length - 1) == '\n' || strFX.GetAt(length - 1) == ' ' || strFX.GetAt(length - 1) == '\t' || strFX.GetAt(length - 1) == '\r')
+	{
+		strFX = strFX.Left(length - 1);
+		length--;
+	}
+
 	m_iOut.oShowInterfaceDlg3(strFX);
 	GenerateModel();
 }
@@ -1760,6 +1768,13 @@ void CMEXSampleDlg::OnBnClickedButtonBom()
 	bomString_edit->GetWindowText(strBOM);
 	if (strBOM==_T(""))
 		return;
+
+	int length = strBOM.GetLength();
+	while (strBOM.GetAt(length - 1) == '\n' || strBOM.GetAt(length - 1) == ' ' || strBOM.GetAt(length - 1) == '\t' || strBOM.GetAt(length - 1) == '\r')
+	{
+		strBOM = strBOM.Left(length - 1);
+		length--;
+	}
 
 	if (((CButton*)GetDlgItem(IDC_CHECK_CLEAR_EXISTING_BOM))->GetCheck())
 		m_iOut.oClearBom();
